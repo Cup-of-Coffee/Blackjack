@@ -2,31 +2,186 @@
 let cardBack = '🂠';
 let cardArray = ['🂡','🂢','🂣','🂤','🂥','🂦','🂧','🂨','🂩','🂪','🂫','🂬','🂭','🂮','🂱','🂲','🂳','🂴','🂵','🂶','🂷','🂸','🂹','🂺','🂻','🂼','🂽','🂾','🃁','🃂','🃃','🃄','🃅','🃆','🃇','🃈','🃉','🃊','🃋','🃌','🃍','🃎','🃑','🃒','🃓','🃔','🃕','🃖','🃗','🃘','🃙','🃚','🃛','🃜','🃝','🃞'];
 
+let dealersHand = [];
+let playersHand = [];
+let playersScore = 0;
+let dealersScore = 0;
+
+let playerMoney = 500;
 
 /*
-Activates after player clicks "Hit" or "Stand". 
+
 */
-function play(action){
+function play(){
 
 }
 
 /*
 
 */
-function X (){
+function hit(){
 
 }
 
 /*
 
 */
-function X (){
-
+function stand(){
+    play();
 }
 
 /*
-
+Convert unicode cards into number.
 */
-function X (){
+function convert(){
+    switch(playersHand){
+        case '🂡': 
 
+        break;
+        case '🂢': 
+
+        break;
+        case '🂣': 
+
+        break;
+        case '🂤': 
+
+        break;
+        case '🂥': 
+
+        break;
+        case '🂦': 
+
+        break;
+        case '🂧': 
+
+        break;
+        case '🂨': 
+
+        break;
+        case '🂩': 
+
+        break;
+        case '🂪': 
+
+        break;
+        case '🂫': 
+
+        break;
+        case '🂬': 
+
+        break;
+        case '🂭': 
+
+        break;
+        case '🂮': 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case : 
+
+        break;
+        case '🃑': 
+
+        break;
+        case '🃒': 
+
+        break;
+        case '🃓': 
+
+        break;
+        case '🃔': 
+
+        break;
+        case '🃕': 
+
+        break;
+        case '🃖': 
+
+        break;
+        case '🃗': 
+
+        break;
+        case '🃘': 
+
+        break;
+        case '🃙': 
+
+        break;
+        case '🃚': 
+
+        break;
+        case '🃛': 
+
+        break;
+        case '🃜': 
+
+        break;
+        case '🃝': 
+
+        break;
+        case '🃞': 
+
+        break;
+    }
 }
+
+
+'🂱''🂲''🂳''🂴''🂵''🂶''🂷''🂸''🂹''🂺''🂻''🂼''🂽''🂾'
+'🃁''🃂''🃃''🃄''🃅''🃆''🃇''🃈''🃉''🃊''🃋''🃌''🃍''🃎'
