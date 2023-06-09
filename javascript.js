@@ -69,11 +69,11 @@ Orders of operation for functions:
     start() at the beginning; draws 2 cards for player and dealer.
         analyze() to see if anyone got a 21 immediately.
     stops for players turn; choosing either...
-        hit() will draw a card, then execute analyze() to see if they went to or over 21.
-        or stand(), which ends their turn, then play() is executed to see if dealer draw enough cards to meet the player, get to or go over 21/
+        hit() will draw() a card, then execute analyze() to see if they went to or over 21.
+        or stand(), which ends their turn, then play() is executed to draw() cards for dealer and see if they meet the player's, get to or go over 21.
     once winner is picked, reset() to reset decks and hands, and refund, withdraw or add in money.
 
-    At every function's execution, update() to update the HTML with new data for cards and money.
+    at every function's execution, update() to update the HTML with new data for cards and money.
 */
 
 /*
@@ -87,7 +87,11 @@ function analyze(){
 Execute at the start of the round, drawing two cards for the dealer's hand and player's hand
 */
 function start(){
+    draw(dealersHand);
+    draw(dealersHand);
 
+    draw(playersHand);
+    draw(playersHand);
 }
 
 /*
@@ -125,16 +129,9 @@ function stand(){
 Draw a card object from cardArray, adding it to the person's hand.
 */
 function draw(person){
-    let randomDraw = Math.random * cardArray.length;
+    let randomDraw = Math.floor(Math.random() * cardArray.length);
 
-    switch(person){
-        case player:
-            playersHand.push(cardArray[randomDraw]);
-        break;
-        case dealer:
-            dealersHand.push(cardArray[randomDraw]);
-        break;
-    }
+    person.push(cardArray[randomDraw]);
 
     cardArray.splice(randomDraw, 1);
 }
