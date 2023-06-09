@@ -1,6 +1,6 @@
 
 let cardBack = '🂠';
-let cardArray = [spadesAce = {face: '🂡', number: 1, numberAce: 11},
+let cardArray = [spadesAce = {face: '🂡', ace: 'yes'},
 spadesTwo = {face: '🂢', number: 2},
 spadesThree = {face: '🂣', number: 3},
 spadesFour = {face: '🂤', number: 4},
@@ -14,7 +14,7 @@ spadesJack = {face: '🂫', number: 10},
 spadesKnight = {face: '🂬', number: 10},
 spadesQueen = {face: '🂭', number: 10},
 spadesKing = {face: '🂮', number: 10},
-heartsAce = {face: '🂱', number: 1, numberAce: 11},
+heartsAce = {face: '🂱', ace: 'yes'},
 heartsTwo = {face: '🂲', number: 2},
 heartsThree = {face: '🂳', number: 3},
 heartsFour = {face: '🂴', number: 4},
@@ -28,7 +28,7 @@ heartsJack = {face: '🂻', number: 10},
 heartsKnight = {face: '🂼', number: 10},
 heartsQueen = {face: '🂽', number: 10},
 heartsKing = {face: '🂾', number: 10},
-diamondsAce = {face: '🃁', number: 1, numberAce: 11},
+diamondsAce = {face: '🃁', ace: 'yes'},
 diamondsTwo = {face: '🃂', number: 2},
 diamondsThree = {face: '🃃', number: 3},
 diamondsFour = {face: '🃄', number: 4},
@@ -42,7 +42,7 @@ diamondsJack = {face: '🃋', number: 10},
 diamondsKnight = {face: '🃌', number: 10},
 diamondsQueen = {face: '🃍', number: 10},
 diamondsKing = {face: '🃎', number: 10},
-clubsAce = {face: '🃑', number: 1, numberAce: 11},
+clubsAce = {face: '🃑', ace: 'yes'},
 clubsTwo = {face: '🃒', number: 2},
 clubsThree = {face: '🃓', number: 3},
 clubsFour = {face: '🃔', number: 4},
@@ -86,10 +86,24 @@ function start(){
 }
 
 /*
-Execute at the start of a round, after hitting or standing. Determines if there's a winner or loser, and ends the round.
+Determines if there's a winner or loser. Checks if person's hand has a ace, if so it'll determine whether they countas a 1 or 11.
 */
-function analyze(){
+function analyze(person){
+    let score;
 
+    for(i = 0; i < person.length; i++){
+        score += person[i].number;
+    }
+
+    let aceArray = person.filter(person => person.ace);
+
+    for(i = 0; i < aceArray.length; i++){
+        if(score < 11){
+            score += 11;
+        }else{
+            score += 1;
+        }
+    }
 }
 
 /*
@@ -135,14 +149,14 @@ function draw(person){
 }
 
 /*
-Update HTML with new data for money and cards.
+Update HTML with new data for money and cards. Uses DOM to update the money to the current value, and create two loops to populate two temporary 
+arrays that is used to update the drawn cards for player and dealer.
 */
 function update(){
     const moneyElement = document.getElementById('money');
     moneyElement.innerText = '$' + playersMoney;
 
     let playersCards = '';
-    let dealersCards = '';
 
     for(i = 0; i < playersHand.length; i++){
         playersCards += playersHand[i].face;
@@ -151,13 +165,14 @@ function update(){
     const playersHandElement = document.getElementById('playersHand');
     playersHandElement.textContent = playersCards;
 
+    let dealersCards = '';
+
     for(i = 0; i < dealersHand.length; i++){
         dealersCards += dealersHand[i].face;
     }
 
     const dealersHandElement = document.getElementById('dealersHand');
     dealersHandElement.textContent = dealersCards;
-
 }
 
 
