@@ -6,12 +6,33 @@ body {
     background-color: darkgreen;
 }
 
+#title {
+    text-align: center;
+    font-weight: bold;
+}
+
 #container {
     display: flex;
     justify-content: center;
     column-gap: 100px;
 }
 
+#panel {
 
+}
 
+#money {
 
+}
+
+#gameboard {
+
+}
+
+#playersHand {
+
+}
+
+#dealersHand {
+
+}

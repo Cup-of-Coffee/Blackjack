@@ -123,7 +123,7 @@ function draw(person){
 }
 
 /*
-Update HTML with new data.
+Update HTML with new data for cards and money.
 */
 function update(){
 
