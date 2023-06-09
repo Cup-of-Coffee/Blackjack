@@ -64,12 +64,29 @@ let dealersScore = 0;
 
 let playerMoney = 500;
 
+/*
+Orders of operation for functions:
+    start() at the beginning; draws 2 cards for player and dealer.
+        analyze() to see if anyone got a 21 immediately.
+    stops for players turn; choosing either...
+        hit() will draw a card, then execute analyze() to see if they went to or over 21.
+        or stand(), which ends their turn, then play() is executed to see if dealer draw enough cards to meet the player, get to or go over 21/
+    once winner is picked, reset() to reset decks and hands, and refund, withdraw or add in money.
 
+    At every function's execution, update() to update the HTML with new data for cards and money.
+*/
 
 /*
 Execute at the start of a round, after hitting or standing. Determines if there's a winner or loser, and ends the round.
 */
 function analyze(){
+
+}
+
+/*
+Execute at the start of the round, drawing two cards for the dealer's hand and player's hand
+*/
+function start(){
 
 }
 
