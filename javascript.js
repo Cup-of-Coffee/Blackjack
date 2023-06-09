@@ -80,6 +80,7 @@ function play(){
 Draw a card to the player's hand.
 */
 function hit(){
+
     draw(playersHand);
 
 
@@ -95,16 +96,40 @@ function stand(){
 }
 
 /*
-
+Draw a card object from cardArray, adding it to the person's hand.
 */
 function draw(person){
+    let randomDraw = Math.random * cardArray.length;
+
+    switch(person){
+        case player:
+            playersHand.push(cardArray[randomDraw]);
+        break;
+        case dealer:
+            dealersHand.push(cardArray[randomDraw]);
+        break;
+    }
+
+    cardArray.splice(randomDraw, 1);
+}
+
+/*
+Update HTML with new data.
+*/
+function update(){
 
 }
+
 
 /*
 Reset the scores and restack the cardArray.
 */
 function reset(){
+
+
+
+
+
 
 }
 
