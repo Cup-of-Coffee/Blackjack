@@ -59,29 +59,20 @@ clubsKing = {face: '🃞', number: 10}];
 
 let dealersHand = [];
 let playersHand = [];
-let playersScore = 0;
-let dealersScore = 0;
+let playersNumber = 0;
+let dealersNumber = 0;
 
-let playerMoney = 500;
+let playersMoney = 500;
 
 /*
 Orders of operation for functions:
-    start() at the beginning; draws 2 cards for player and dealer.
-        analyze() to see if anyone got a 21 immediately.
+    start() at the beginning; draws 2 cards for player and dealer. update() to change HTML to show cards.
+        analyze() to see if anyone got a 21 immediately. update() to display winner prompt if so.
     stops for players turn; choosing either...
-        hit() will draw() a card, then execute analyze() to see if they went to or over 21.
-        or stand(), which ends their turn, then play() is executed to draw() cards for dealer and see if they meet the player's, get to or go over 21.
-    once winner is picked, reset() to reset decks and hands, and refund, withdraw or add in money.
-
-    at every function's execution, update() to update the HTML with new data for cards and money.
+        hit() will draw() a card, then execute analyze() to see if they went to or over 21. update() to show new card and to display winner prompt if number is 21.
+        or stand(), which ends their turn, then play() is executed to draw() cards for dealer and see if they meet the player's, get to or go over 21. update() to show cards.
+    once winner is picked, reset() to reset decks and hands, and refund, withdraw or add in money. update() to show current money.
 */
-
-/*
-Execute at the start of a round, after hitting or standing. Determines if there's a winner or loser, and ends the round.
-*/
-function analyze(){
-
-}
 
 /*
 Execute at the start of the round, drawing two cards for the dealer's hand and player's hand
@@ -95,19 +86,26 @@ function start(){
 }
 
 /*
-Calculate player's score, comparing to dealer's score, and draw cards to the dealer's hand until they win or lose.
+Execute at the start of a round, after hitting or standing. Determines if there's a winner or loser, and ends the round.
+*/
+function analyze(){
+
+}
+
+/*
+Calculate player's number, comparing to dealer's number, and draw cards to the dealer's hand until they win or lose.
 */
 function play(){
 
 
 
-    draw(dealersHands);
+    draw(dealersHand);
 
 
 }
 
 /*
-Draw a card to the player's hand.
+Draw a card to playersHand.
 */
 function hit(){
 
@@ -137,15 +135,26 @@ function draw(person){
 }
 
 /*
-Update HTML with new data for cards and money.
+Update HTML with new data for money and cards.
 */
 function update(){
+    const moneyElement = document.getElementById('money');
+    moneyElement.innerText = '$' + playersMoney;
 
+    for(i = 0; i < playersHand.length; i++){
+        const playersHandElement = document.getElementById('playersHand');
+        playersHandElement.textContent += playersHand[i].face;
+    }
+
+    for(i = 0; i < dealersHand.length; i++){
+        const dealersHandElement = document.getElementById('dealersHand');
+        dealersHandElement.textContent += dealersHand[i].face;
+    }
 }
 
 
 /*
-Reset the scores and restack the cardArray.
+Reset the numbers and restack the cardArray with cards from playersHand and dealersHand.
 */
 function reset(){
 
