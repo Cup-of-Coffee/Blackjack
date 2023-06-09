@@ -141,15 +141,23 @@ function update(){
     const moneyElement = document.getElementById('money');
     moneyElement.innerText = '$' + playersMoney;
 
+    let playersCards = '';
+    let dealersCards = '';
+
     for(i = 0; i < playersHand.length; i++){
-        const playersHandElement = document.getElementById('playersHand');
-        playersHandElement.textContent += playersHand[i].face;
+        playersCards += playersHand[i].face;
     }
 
+    const playersHandElement = document.getElementById('playersHand');
+    playersHandElement.textContent = playersCards;
+
     for(i = 0; i < dealersHand.length; i++){
-        const dealersHandElement = document.getElementById('dealersHand');
-        dealersHandElement.textContent += dealersHand[i].face;
+        dealersCards += dealersHand[i].face;
     }
+
+    const dealersHandElement = document.getElementById('dealersHand');
+    dealersHandElement.textContent = dealersCards;
+
 }
 
 
