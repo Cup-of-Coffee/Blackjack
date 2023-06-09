@@ -65,27 +65,47 @@ let dealersScore = 0;
 let playerMoney = 500;
 
 /*
-
+Calculate player's score, comparing to dealer's score, and draw cards to the dealer's hand until they win or lose.
 */
 function play(){
 
 
 
+    draw(dealersHands);
+
+
 }
 
 /*
-
+Draw a card to the player's hand.
 */
 function hit(){
+    draw(playersHand);
 
 
 
 }
 
 /*
-
+Ends the round and let the dealer act.
 */
 function stand(){
 
     play();
 }
+
+/*
+
+*/
+function draw(person){
+
+}
+
+/*
+Reset the scores and restack the cardArray.
+*/
+function reset(){
+
+}
+
+
