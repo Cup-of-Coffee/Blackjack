@@ -64,6 +64,15 @@ let dealersScore = 0;
 
 let playerMoney = 500;
 
+
+
+/*
+Execute at the start of a round, after hitting or standing. Determines if there's a winner or loser, and ends the round.
+*/
+function analyze(){
+
+}
+
 /*
 Calculate player's score, comparing to dealer's score, and draw cards to the dealer's hand until they win or lose.
 */
