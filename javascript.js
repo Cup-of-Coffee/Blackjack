@@ -77,36 +77,15 @@ Orders of operation for functions:
 start();
 
 /*
-Execute at the start of the round, drawing two cards for the dealer's hand and player's hand
+Execute at the start of the game or after a new round. Draws two cards for the dealer's hand and player's hand.
 */
 function start(){
-    draw(dealersHand);
-    draw(dealersHand);
+    draw(dealersHand, true);
+    draw(dealersHand, true);
 
     draw(playersHand);
     draw(playersHand);
     update();
-}
-
-/*
-Determines if there's a winner or loser. Checks if person's hand has a ace, if so it'll determine whether they countas a 1 or 11.
-*/
-function analyze(person){
-    let score;
-
-    for(i = 0; i < person.length; i++){
-        score += person[i].number;
-    }
-
-    let aceArray = person.filter(person => person.ace);
-
-    for(i = 0; i < aceArray.length; i++){
-        if(score < 11){
-            score += 11;
-        }else{
-            score += 1;
-        }
-    }
 }
 
 /*
@@ -137,7 +116,39 @@ function stand(){
     update();
 }
 
-/*  FINISHED
+/*
+Reset the numbers and restack the cardArray with cards from playersHand and dealersHand.
+*/
+function reset(){
+
+
+
+}
+
+/* ============================================================================================================= */
+
+/*
+Determines if there's a winner or loser. Checks if person's hand has a ace, if so it'll determine whether they countas a 1 or 11.
+*/
+function analyze(person){
+    let score;
+
+    for(i = 0; i < person.length; i++){
+        score += person[i].number;
+    }
+
+    let aceArray = person.filter(person => person.ace);
+
+    for(i = 0; i < aceArray.length; i++){
+        if(score < 11){
+            score += 11;
+        }else{
+            score += 1;
+        }
+    }
+}
+
+/*
 Draw a randomly chosen card object from cardArray, taking it and adding it to the person's hand.
 */
 function draw(person, hidden){
@@ -154,7 +165,7 @@ function draw(person, hidden){
     cardArray.splice(randomDraw, 1);
 }
 
-/*  BUGGED
+/*
 Update HTML with new data for money and cards. Uses DOM to update the money to the current value, and create two loops to populate two temporary 
 arrays that is used to update the drawn cards for player and dealer.
 */
@@ -180,18 +191,3 @@ function update(){
     const dealersHandElement = document.getElementById('dealersHand');
     dealersHandElement.textContent = dealersCards;
 }
-
-
-/*
-Reset the numbers and restack the cardArray with cards from playersHand and dealersHand.
-*/
-function reset(){
-
-
-
-
-
-
-}
-
-
