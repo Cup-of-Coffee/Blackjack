@@ -66,17 +66,17 @@ let playersMoney = 500;
 
 /*
 Orders of operation loop for functions:
-    1: start() at the beginning; draws 2 cards for player and dealer, the dealer's cards are hidden.
-    stops for players turn; choosing either...
+    1: start() at the beginning; draws 2 cards for player and dealer each, the dealer's cards are hidden. It stops for players 
+    turn; letting them choosing either...
         a: hit(), which will draw a card, until they either win, lose or choose...
         b: stand(), which will end the players turn, reveal the dealer's cards, and have the dealer attempt to beat the player.
     2: once a winner is chosen or a tie is met, money is updated for the player, and the round ends. The player can choose to 
     to start() again with their new money.
 
 Outside of this loop, there are:
-    analyze(), used to determine whether a person won, still going or lost, returning a output on the three possible conditions.
-    draw(), used to draw a card from the cardArray object array.
-    update(), used to update elements by using DOM.
+    . analyze(), used to calculate and return their score.
+    . draw(), used to draw a card from the cardArray object array.
+    . update(), used to update elements by using DOM.
 */
 
 start();
@@ -94,22 +94,11 @@ function start(){
 }
 
 /*
-Calculate player's number, comparing to dealer's number, and draw cards to the dealer's hand until they win or lose.
-*/
-function play(){
-
-
-
-    draw(dealersHand);
-
-
-}
-
-/*
 Draw a card to playersHand.
 */
 function hit(){
     draw(playersHand);
+    analyze(playersHand);
     update();
 }
 
@@ -135,7 +124,7 @@ function reset(){
 /*
 Determines if there's a winner or loser. Checks if person's hand has a ace, if so it'll determine whether they countas a 1 or 11.
 */
-function analyze(person){
+function grade(person){
     let score;
 
     for(i = 0; i < person.length; i++){
@@ -151,6 +140,19 @@ function analyze(person){
             score += 1;
         }
     }
+
+    if(score < 21){
+        return 'play';
+    }else if(score){
+
+    }
+}
+
+/*
+
+*/
+function judge(){
+
 }
 
 /*
