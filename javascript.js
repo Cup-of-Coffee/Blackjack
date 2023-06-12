@@ -65,13 +65,18 @@ let dealersNumber = 0;
 let playersMoney = 500;
 
 /*
-Orders of operation for functions:
-    start() at the beginning; draws 2 cards for player and dealer. update() to change HTML to show cards.
-        analyze() to see if anyone got a 21 immediately. update() to display winner prompt if so.
+Orders of operation loop for functions:
+    1: start() at the beginning; draws 2 cards for player and dealer, the dealer's cards are hidden.
     stops for players turn; choosing either...
-        hit() will draw() a card, then execute analyze() to see if they went to or over 21. update() to show new card and to display winner prompt if number is 21.
-        or stand(), which ends their turn, then play() is executed to draw() cards for dealer and see if they meet the player's, get to or go over 21. update() to show cards.
-    once winner is picked, reset() to reset decks and hands, and refund, withdraw or add in money. update() to show current money.
+        a: hit(), which will draw a card, until they either win, lose or choose...
+        b: stand(), which will end the players turn, reveal the dealer's cards, and have the dealer attempt to beat the player.
+    2: once a winner is chosen or a tie is met, money is updated for the player, and the round ends. The player can choose to 
+    to start() again with their new money.
+
+Outside of this loop, there are:
+    analyze(), used to determine whether a person won, still going or lost, returning a output on the three possible conditions.
+    draw(), used to draw a card from the cardArray object array.
+    update(), used to update elements by using DOM.
 */
 
 start();
