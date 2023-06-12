@@ -74,7 +74,8 @@ Orders of operation loop for functions:
     to start() again with their new money.
 
 Outside of this loop, there are:
-    . analyze(), used to calculate and return their score.
+    . grade(), used to calculate and return their score.
+    . judge(), used to compare scores and determine a winner or loser.
     . draw(), used to draw a card from the cardArray object array.
     . update(), used to update elements by using DOM.
 */
@@ -82,7 +83,7 @@ Outside of this loop, there are:
 start();
 
 /*
-Execute at the start of the game or after a new round. Draws two cards for the dealer's hand and player's hand.
+Execute at the start of the game or after a new round. Draws two hidden cards for the dealer's hand and two cards for the player's hand.
 */
 function start(){
     draw(dealersHand, true);
@@ -90,6 +91,7 @@ function start(){
 
     draw(playersHand);
     draw(playersHand);
+    judge();
     update();
 }
 
@@ -98,7 +100,7 @@ Draw a card to playersHand.
 */
 function hit(){
     draw(playersHand);
-    analyze(playersHand);
+    judge();
     update();
 }
 
@@ -141,18 +143,23 @@ function grade(person){
         }
     }
 
-    if(score < 21){
-        return 'play';
-    }else if(score){
-
-    }
+    return score;
 }
 
 /*
 
 */
 function judge(){
+    playersNumber = grade(playersHand);
+    dealersNumber = grade(dealersHand);
 
+    if(playersNumber === 21 && dealersNumber === 21){
+        end('tie');
+    }else if(playersNumber === 21 || dealersNumber > 21){
+        end('player');
+    }else if(dealersNumber === 21 || playersNumber > 21){
+        end('dealer');
+    }
 }
 
 /*
@@ -164,8 +171,6 @@ function draw(person, hidden){
     if(hidden){
         cardArray[randomDraw].hidden = true;
     }
-
-    console.log(cardArray[randomDraw]);
 
     person.push(cardArray[randomDraw]);
 
