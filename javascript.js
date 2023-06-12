@@ -74,6 +74,11 @@ Orders of operation for functions:
     once winner is picked, reset() to reset decks and hands, and refund, withdraw or add in money. update() to show current money.
 */
 
+update();
+update();
+update();
+update();
+
 /*
 Execute at the start of the round, drawing two cards for the dealer's hand and player's hand
 */
@@ -83,6 +88,7 @@ function start(){
 
     draw(playersHand);
     draw(playersHand);
+    update();
 }
 
 /*
@@ -122,23 +128,20 @@ function play(){
 Draw a card to playersHand.
 */
 function hit(){
-
     draw(playersHand);
-
-
-
+    update();
 }
 
 /*
 Ends the round and let the dealer act.
 */
 function stand(){
-
     play();
+    update();
 }
 
-/*
-Draw a card object from cardArray, adding it to the person's hand.
+/*  FINISHED
+Draw a randomly chosen card object from cardArray, taking it and adding it to the person's hand.
 */
 function draw(person){
     let randomDraw = Math.floor(Math.random() * cardArray.length);
@@ -148,13 +151,13 @@ function draw(person){
     cardArray.splice(randomDraw, 1);
 }
 
-/*
+/*  BUGGED
 Update HTML with new data for money and cards. Uses DOM to update the money to the current value, and create two loops to populate two temporary 
 arrays that is used to update the drawn cards for player and dealer.
 */
 function update(){
     const moneyElement = document.getElementById('money');
-    moneyElement.innerText = '$' + playersMoney;
+    moneyElement.textContent = '$' + playersMoney;
 
     let playersCards = '';
 
