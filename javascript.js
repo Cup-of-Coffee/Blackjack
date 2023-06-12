@@ -74,10 +74,7 @@ Orders of operation for functions:
     once winner is picked, reset() to reset decks and hands, and refund, withdraw or add in money. update() to show current money.
 */
 
-update();
-update();
-update();
-update();
+start();
 
 /*
 Execute at the start of the round, drawing two cards for the dealer's hand and player's hand
@@ -157,7 +154,7 @@ arrays that is used to update the drawn cards for player and dealer.
 */
 function update(){
     const moneyElement = document.getElementById('money');
-    moneyElement.textContent = '$' + playersMoney;
+    moneyElement.textContent ='$' + playersMoney;
 
     let playersCards = '';
 
