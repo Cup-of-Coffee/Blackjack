@@ -70,8 +70,8 @@ Orders of operation loop for functions:
     turn; letting them choosing either...
         a: hit(), which will draw a card, until they either win, lose or choose...
         b: stand(), which will end the players turn, reveal the dealer's cards, and have the dealer attempt to beat the player.
-    2: once a winner is chosen or a tie is met, money is updated for the player, and the round ends. The player can choose to 
-    to start() again with their new money.
+    2: once a winner is chosen or a tie is met, end() is called to give the pot to the winner. The player can choose from there 
+    to start() again with their new money or reset().
 
 Outside of this loop, there are:
     . grade(), used to calculate and return their score.
@@ -113,6 +113,21 @@ function stand(){
 }
 
 /*
+Ends the game, locking certain buttons and making other ones available.
+*/
+function end(condition){
+
+    // Make 'hit' and 'stand unclickable.
+
+    // Make new game and restart available.
+
+    // Update money from pot.
+
+    // Inform who won.
+
+}
+
+/*
 Reset the numbers and restack the cardArray with cards from playersHand and dealersHand.
 */
 function reset(){
@@ -147,7 +162,7 @@ function grade(person){
 }
 
 /*
-
+Set and determine the win condition for who won.
 */
 function judge(){
     playersNumber = grade(playersHand);
