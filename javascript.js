@@ -66,7 +66,7 @@ let playersMoney = 500;
 
 /*
 Orders of operation loop for functions:
-    1: start() at the beginning; draws 2 cards for player and dealer each, the dealer's cards are hidden. It stops for players 
+    1: start() at the beginning; draws 2 cards for player and dealer each, one of the dealer's cards are hidden. It stops for players 
     turn; letting them choosing either...
         a: hit(), which will draw a card, until they either win, lose or choose...
         b: stand(), which will end the players turn, reveal the dealer's cards, and have the dealer attempt to beat the player.
@@ -87,7 +87,7 @@ Execute at the start of the game or after a new round. Draws two hidden cards fo
 */
 function start(){
     draw(dealersHand, true);
-    draw(dealersHand, true);
+    draw(dealersHand);
 
     draw(playersHand);
     draw(playersHand);
@@ -108,8 +108,15 @@ function hit(){
 Ends the round and let the dealer act.
 */
 function stand(){
-    play();
+
+    // dealer reveal last card
+
+    judge();
     update();
+
+    // dealer begin to draw cards if below amount of player and under winning limit
+
+    // maybe put this into another function called finish() where dealer does calculation and pull cards.
 }
 
 /*
@@ -212,7 +219,14 @@ function update(){
     let dealersCards = '';
 
     for(i = 0; i < dealersHand.length; i++){
-        dealersCards += dealersHand[i].face;
+        switch(dealersHand[i].hidden){
+            case true:
+                dealersCards += cardBack;
+                break;
+            case false: 
+                dealersCards += dealersHand[i].face;
+                break;
+        }
     }
 
     const dealersHandElement = document.getElementById('dealersHand');
