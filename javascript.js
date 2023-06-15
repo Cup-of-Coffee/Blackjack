@@ -91,7 +91,6 @@ function start(){
 
     draw(playersHand);
     draw(playersHand);
-    update();
     judge();
 }
 
@@ -100,7 +99,6 @@ Draw a card to playersHand.
 */
 function hit(){
     draw(playersHand);
-    update();
     judge();
 }
 
@@ -115,9 +113,13 @@ function stand(){
     }
 
     update();
-    judge();
 
-    // dealer begin to draw cards if below amount of player and under winning limit
+    // dealer begin to draw cards if below amount of player and under winning limit, running judge at each loop.
+    let limit = false;
+    do{
+        draw(dealersHand);
+        judge();
+    }while(!limit);
 
     // maybe put this into another function called finish() where dealer does calculation and pull cards.
 }
@@ -181,6 +183,7 @@ function grade(person){
 Set and determine the win condition for who won.
 */
 function judge(){
+    update();
     playersNumber = grade(playersHand);
     dealersNumber = grade(dealersHand);
 
