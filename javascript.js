@@ -149,7 +149,7 @@ function reset(){
 Determines if there's a winner or loser. Checks if person's hand has a ace, if so it'll determine whether they countas a 1 or 11.
 */
 function grade(person){
-    let score;
+    let score = 0;
 
     for(i = 0; i < person.length; i++){
         score += person[i].number;
