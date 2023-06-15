@@ -1,6 +1,6 @@
 
 let cardBack = '🂠';
-let cardArray = [spadesAce = {face: '🂡', ace: 'yes', hidden: false},
+let cardArray = [spadesAce = {face: '🂡', ace: true, hidden: false},
 spadesTwo = {face: '🂢', number: 2, hidden: false},
 spadesThree = {face: '🂣', number: 3, hidden: false},
 spadesFour = {face: '🂤', number: 4, hidden: false},
@@ -14,7 +14,7 @@ spadesJack = {face: '🂫', number: 10, hidden: false},
 spadesKnight = {face: '🂬', number: 10, hidden: false},
 spadesQueen = {face: '🂭', number: 10, hidden: false},
 spadesKing = {face: '🂮', number: 10, hidden: false},
-heartsAce = {face: '🂱', ace: 'yes', hidden: false},
+heartsAce = {face: '🂱', ace: true, hidden: false},
 heartsTwo = {face: '🂲', number: 2, hidden: false},
 heartsThree = {face: '🂳', number: 3, hidden: false},
 heartsFour = {face: '🂴', number: 4, hidden: false},
@@ -28,7 +28,7 @@ heartsJack = {face: '🂻', number: 10, hidden: false},
 heartsKnight = {face: '🂼', number: 10, hidden: false},
 heartsQueen = {face: '🂽', number: 10, hidden: false},
 heartsKing = {face: '🂾', number: 10, hidden: false},
-diamondsAce = {face: '🃁', ace: 'yes', hidden: false},
+diamondsAce = {face: '🃁', ace: true, hidden: false},
 diamondsTwo = {face: '🃂', number: 2, hidden: false},
 diamondsThree = {face: '🃃', number: 3, hidden: false},
 diamondsFour = {face: '🃄', number: 4, hidden: false},
@@ -42,7 +42,7 @@ diamondsJack = {face: '🃋', number: 10, hidden: false},
 diamondsKnight = {face: '🃌', number: 10, hidden: false},
 diamondsQueen = {face: '🃍', number: 10, hidden: false},
 diamondsKing = {face: '🃎', number: 10, hidden: false},
-clubsAce = {face: '🃑', ace: 'yes', hidden: false},
+clubsAce = {face: '🃑', ace: true, hidden: false},
 clubsTwo = {face: '🃒', number: 2, hidden: false},
 clubsThree = {face: '🃓', number: 3, hidden: false},
 clubsFour = {face: '🃔', number: 4, hidden: false},
@@ -149,23 +149,30 @@ function reset(){
 Determines if there's a winner or loser. Checks if person's hand has a ace, if so it'll determine whether they countas a 1 or 11.
 */
 function grade(person){
-    let score = 0;
+    let cardScore = 0;
+    let aceCount = 0;
 
     for(i = 0; i < person.length; i++){
-        score += person[i].number;
-    }
-
-    let aceArray = person.filter(person => person.ace);
-
-    for(i = 0; i < aceArray.length; i++){
-        if(score < 11){
-            score += 11;
+        if(person[i].ace){
+            aceCount++;
         }else{
-            score += 1;
+            cardScore += person[i].number;
         }
     }
 
-    return score;
+    console.log(cardScore);
+    console.log(aceCount);
+
+    for(i = 0; i < aceCount; i++){
+        console.log('test');
+        if(cardScore < 11){
+            cardScore += 11;
+        }else{
+            cardScore += 1;
+        }
+    }
+
+    return cardScore;
 }
 
 /*
