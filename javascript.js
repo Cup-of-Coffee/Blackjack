@@ -91,8 +91,8 @@ function start(){
 
     draw(playersHand);
     draw(playersHand);
-    judge();
     update();
+    judge();
 }
 
 /*
@@ -100,8 +100,8 @@ Draw a card to playersHand.
 */
 function hit(){
     draw(playersHand);
-    judge();
     update();
+    judge();
 }
 
 /*
@@ -110,9 +110,12 @@ Ends the round and let the dealer act.
 function stand(){
 
     // dealer reveal last card
+    for(i = 0; i < dealersHand.length; i++){
+        dealersHand[i].hidden = false;
+    }
 
-    judge();
     update();
+    judge();
 
     // dealer begin to draw cards if below amount of player and under winning limit
 
@@ -124,7 +127,10 @@ Ends the game, locking certain buttons and making other ones available.
 */
 function end(condition){
 
-    // Make 'hit' and 'stand unclickable.
+    //temp testing prompt
+    alert(condition + " won!");
+
+    // Make 'hit' and 'stand' unclickable.
 
     // Make new game and restart available.
 
@@ -160,11 +166,7 @@ function grade(person){
         }
     }
 
-    console.log(cardScore);
-    console.log(aceCount);
-
     for(i = 0; i < aceCount; i++){
-        console.log('test');
         if(cardScore < 11){
             cardScore += 11;
         }else{
