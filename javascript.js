@@ -118,7 +118,7 @@ function stand(){
     let limit = false;
     do{
         draw(dealersHand);
-        judge();
+        judge();    // figure out a solution to have judge return a victor signal to end the loop.
     }while(!limit);
 
     // maybe put this into another function called finish() where dealer does calculation and pull cards.
